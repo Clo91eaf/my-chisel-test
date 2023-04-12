@@ -1,4 +1,9 @@
 ### Project Specific stuff
+.bloop/
+.metals/
+.vscode/
+project/
+.github/
 test_run_dir/*
 ### XilinxISE template
 # intermediate build files

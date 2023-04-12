@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.name != 'chisel-template'
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -30,9 +29,9 @@ jobs:
           GROUP="com.github.$SAFE_ORG"
 
           # Replace placeholders
-          sed -i "s/%NAME%/$NAME/g" build.sbt build.sc README.md
+          sed -i "s/test/$NAME/g" build.sbt build.sc README.md
           sed -i "s/%REPOSITORY%/${GITHUB_REPOSITORY/\//\\/}/g" README.md
-          sed -i "s/%ORGANIZATION%/$GROUP/g" build.sbt
+          sed -i "s/hdu/$GROUP/g" build.sbt
 
           # Remove lines marked with #REMOVE-ON-CLEANUP#
           sed -i '/#REMOVE-ON-CLEANUP#/d' README.md
