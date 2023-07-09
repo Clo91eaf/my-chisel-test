@@ -2,21 +2,14 @@
 package func
 
 import chisel3._
-
+import chisel3.util._
 
 class funcBundle extends Bundle {
-  val input = Input(UInt(2.W))
-  val output = Output(UInt(4.W))
+  val input = Input(Vec(2, UInt(1.W)))
+  val output = Output(UInt(2.W))
 }
 
 class func extends Module {
   val io = IO(new funcBundle)
-
-  def test(in: UInt): UInt = {
-    val out = Wire(UInt(4.W))
-    out := in << 2.U
-    out
-  }
-
-  io.output <> test(io.input)
+  io.output := Cat(io.input(1), io.input(0))
 }

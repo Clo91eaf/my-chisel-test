@@ -6,12 +6,12 @@ import org.scalatest.freespec.AnyFreeSpec
 import chisel3.experimental.BundleLiterals._
 
 class funcSpec extends AnyFreeSpec with ChiselScalatestTester {
-   "func should calculate proper" in {
+  "func should calculate proper" in {
     test(new func) { c =>
-      for (i <- 0 until 4) {
-        c.io.input.poke(i.U)
-        c.io.output.expect((i << 2).U)
+      for {i <- 0 until 2} {
+        c.io.input(i).poke(0.U)
       }
+      c.io.output.expect("b10".U)
     }
   }
 }
